@@ -1,0 +1,18 @@
+@import '../../common.scss';
+.wrap {
+	max-width: 600px;
+	text-align: left;
+	margin: 10px auto;
+	border: 1px solid;
+	padding: 10px;
+	line-height: 1.5;
+	background: white;
+}
+a.link, a.link:visited {
+	color:  #006060;
+	text-decoration: none;
+	
+}
+a.link:hover {
+	text-decoration: underline;
+}

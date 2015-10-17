@@ -1,0 +1,143 @@
+@import '../../common.scss';
+
+$logoHeight: 96px;
+$logoMarginTop: 8px;
+$logoMarginLeft: 10px;
+$paddingHeight: ($appBarHeight - $symbolSize)/2; //11px; // (54 - 32 (symbol高))/2
+
+.appbar {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: $white;
+	padding: 0px;
+	height: $appBarHeightExtended;
+	width: 100%;
+  	box-shadow: 0 4px 4px 0px rgba($trueBlack, 0.25);
+	z-index: $zAppBar;
+}
+.appbar.showMenu {
+	height: auto;
+}
+.inner {
+	max-width: $contentMaxWidth;
+	position: relative;
+	margin: 0 auto;
+}
+.siteName, .siteName:visited {
+	position: absolute;
+	display: inline-block;
+	margin: 0;
+	margin-top: $logoMarginTop;
+	margin-left: $logoMarginLeft;
+	text-decoration: none;
+	img {
+		@include prefix(filter, drop-shadow(0 0 20px rgba($trueWhite, 0.5)));
+	}
+}
+.siteLogo {
+	display: block;
+	height: $logoHeight;
+	padding: 0;
+}
+.lists {
+	display: block;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	max-height: 0px;
+	overflow: hidden;
+	list-style-type: none;
+	text-align: left;
+}
+.lists.showMenu {
+	width: 100%;
+	max-height: 1000px;
+	padding-top: $logoHeight + $logoMarginTop;
+  //transition: max-height .5s ease-in-out;
+}
+.lists li {
+	display: inline-block;
+	margin: 0;
+	width: 50%;
+	text-align: center;
+}
+.navItem, .navItem:visited {
+	display: block;
+	color: $black;
+	text-decoration: none;
+	padding: $paddingHeight;
+	height: $appBarHeight;
+}
+.navItem:hover, .navItem.active {
+	background: rgba($glow, 0.25);
+	//border-bottom: 4px solid aqua;
+}
+.navItem > * {
+	display: inline-block;
+	vertical-align: middle;
+}
+.rightToggle {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 54px;
+	height: 54px;
+	cursor: pointer;
+}
+.icon {
+	display: inline-block;
+	margin-right: 3px;
+}
+@media all and (min-width: 400px) {
+	.lists li {
+		width: 20%;
+	}
+	.navItem {
+		height: auto;
+		padding: 11px 5px;
+	}
+	.navItem > * {
+		display: block;
+		margin: 0 auto;
+	}
+	.navItem > span {
+		margin-top: 2px;
+	}
+}
+@media screen and (min-width: 540px) {
+	.navItem > * {
+		display: inline-block;
+	}
+}
+@media screen and (min-width: $appBarBreakLarge) {
+	.appbar, .appbar.showMenu {
+    height: $appBarHeight;
+	}
+	.siteName {
+
+	}
+  .lists {
+  	max-height: 1000px;
+ 		display: block;
+ 		list-style-type: none;
+ 		margin: 0 auto;
+		text-align: right;
+  }
+  .lists li {
+ 		margin: 0;
+		width: auto;
+ 		display: inline-block;
+  }
+  .navItem {
+  	display: inline-block;
+		padding: 11px;
+  }
+	.navItem > * {
+		display: inline-block;
+		margin: 0;
+	}
+  .rightToggle {
+  	display: none;
+  }
+}

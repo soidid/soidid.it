@@ -1,0 +1,30 @@
+@import '../common.scss';
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, "PingFang TC", "Heiti TC", "Apple LiGothic Medium", "微軟正黑體", sans-serif;
+  font-size: $defaultFontSize;
+  line-height: $defaultLineHeight;
+  color: $black;
+  background: $defaultBackgroundColor;
+}
+.app {
+	width: 100%;
+	overflow: hidden;
+}
+.invisible {
+  max-height: 0;
+  overflow: hidden;
+}
+.spaceBar {
+  display: block;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: $appBarHeightExtended;
+}
+@media screen and (min-width: $appBarBreakLarge) {
+  .spaceBar {
+    height: $appBarHeight;
+  }
+}

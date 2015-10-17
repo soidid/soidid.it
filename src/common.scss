@@ -1,0 +1,107 @@
+// colors
+$trueWhite: #fff;
+$trueBlack: #000;
+$white: #f5f5f5;
+$darkGrey: #555;
+$grey: #aaa;
+$lightGrey: #ddd;
+$black: #0f0f0f;
+$awesomeColor: #005060;
+$defaultBackgroundColor: #eee;
+$textColor: $black; // deprecating textColor
+$glow: aqua;
+
+// typography
+$defaultFontSize: 16px;
+$smallerFontSize: 14px;
+
+$defaultLineHeight: 1.25;
+$textLineHeight: 1.5;
+
+$symbolSize: 32px;
+.symbol {
+  display: inline-block;
+  width: $symbolSize;
+  height: $symbolSize;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin ia($color) {
+  color: $color;
+  &:hover {
+    border-bottom-color: $color;
+  }
+}
+a.ia {
+  line-height: $defaultLineHeight;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+
+  &.bright { @include ia($awesomeColor); }
+  &.black { @include ia($black); }
+  &.dim { @include ia($grey); }
+  &.inverted { @include ia($white); }
+  &.big {
+    border-bottom-width: 3px;
+  }
+}
+
+// css common mixins
+@mixin inline-middle {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@mixin prefix($key, $val) {
+  -webkit-#{$key}: $val;
+	-ms-#{$key}: $val;
+	#{$key}: $val;
+}
+
+// dimensions
+$contentMaxWidth: 1200px;
+
+$appBarBreakLarge: 720px;
+$appBarHeight: 54px;
+$appBarHeightExtended: 82px;
+
+// z-index
+$zPlayingVideo: 999;
+$zAppBar: 99;
+$zProcessingIndicator: 99;
+
+// 表態
+$ayeColor: #00FFB0;
+$nayColor: #FF0055;
+$unknownColor: #FFF800;
+.aye { background: $ayeColor; }
+.nay { background: $nayColor; }
+.unknown { background: $unknownColor; }
+$defaultCubeSize: 20px;
+
+// 黨旗
+.partyFlag {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    vertical-align: top;
+    display: inline-block;
+}
+.partyFlag.small {
+  width: 24px;
+  height: 24px;
+}
+.partyFlag.large {
+  width: 74px;
+  height: 74px;
+}
+.partyFlag.KMT { background: url(images/flag-kmt.svg); }
+.partyFlag.DPP { background: url(images/flag-dpp.svg); }
+.partyFlag.GSD { background: url(images/flag-gsd.svg); }
+.partyFlag.MKT { background: url(images/flag-mkt.svg); }
+.partyFlag.NONE { background: url(images/flag-none.svg); }
+.partyFlag.NP { background: url(images/flag-np.svg); }
+.partyFlag.NSU { background: url(images/flag-npp.svg); }
+.partyFlag.PFP { background: url(images/flag-pfp.svg); }
+.partyFlag.TSU { background: url(images/flag-tsu.svg); }

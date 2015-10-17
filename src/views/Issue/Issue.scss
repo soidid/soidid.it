@@ -1,0 +1,93 @@
+@import '../../common.scss';
+
+$breakSmall: 400px;
+$breakMedium: 600px;
+$breakLarge: 900px;
+.wrap {
+  position: relative;
+  min-height: 500px;
+}
+.invisibleBlock {
+  max-height: 0px;
+  overflow: hidden;
+}
+.interactiveControl {
+    position: fixed;
+    top: 86px;
+    left: 10px;
+    width: 80px;
+    background: white;
+    padding: 10px;
+    z-index: 100;
+    cursor: pointer;
+    border: 1px solid;
+}
+.headerNotification {
+  background: $awesomeColor;
+  font-size: 14px;
+  color: $white;
+  text-align: center;
+  margin: 0;
+  padding: 1em;
+  line-height: 1.5;
+  will-change: max-height;
+}
+.headerNotificationText {
+  width: 100%;
+  margin-bottom: 1em;
+  text-align: center;
+}
+.headerNotification.isHide {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 800ms;
+  padding: 0;
+}
+.undo, .removeButton {
+  display: inline-block;
+  margin: 0;
+  padding: 0.25em 0.5em;
+  width: calc(50% - 2px);
+  background: rgba($trueWhite, 0.5);
+  color: $black;
+  cursor: pointer;
+}
+.undo:hover, .removeButton:hover {
+  background: $trueWhite;
+}
+.undo {
+  margin-right: 4px;
+}
+@media all and (min-width: $breakSmall) {
+  .undo, .removeButton {
+    width: auto;
+  }
+}
+@media all and (min-width: $breakLarge) {
+  .headerNotificationText {
+    display: inline-block;
+    width: auto;
+    margin: 0 1em 0 0;
+  }
+}
+.settingPanel {
+  width: 100%;
+  padding-top: 8px;
+  background: none;
+  font-size: $smallerFontSize;
+
+  &.withBackground {
+    background: $trueWhite;
+  }
+}
+.settingButtons {
+  width: 100%;
+  text-align: right;
+
+}
+.settingButton {
+  display: inline-block;
+  margin: 0 4px;
+  cursor: pointer;
+  text-align: center;
+}

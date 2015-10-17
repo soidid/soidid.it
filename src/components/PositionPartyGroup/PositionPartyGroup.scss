@@ -1,0 +1,140 @@
+$cubeSize: 20px;
+$ayeColor: #00FFB0;
+$nayColor: #FF0055;
+$unknownColor: #FFF800;
+
+.wrap {
+	display: inline-block;
+}
+.header {
+	display: block;
+	max-width: 100vw;
+}
+.userPositionBlock {
+    position: relative;
+    text-align: center;
+}
+.userPositionText {
+    padding: 6px 10px;
+    border: 1px solid gray;
+    margin: 0 auto 10px auto;
+    display: inline-block;
+    position: relative;
+}
+.userPositionText:before {
+    content: '';
+    border-top: 10px solid #171717;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    position: absolute;
+    bottom: -10px;
+    left: calc(50% - 5px);
+}
+.userPositionText:after {
+    content: '';
+    border-top: 18px solid #eeeeee;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    position: absolute;
+    bottom: -9px;
+    left: calc(50% - 9px);
+}
+.margin {
+	display: inline-block;
+	margin: 20px;
+}
+.positionWrap {
+	position: relative;
+	float: left;
+}
+.positionCube, .positionCube:visited {
+	width: $cubeSize;
+	height: $cubeSize;
+	float: left;
+	position:relative;
+	cursor: pointer;
+	color: black;
+	text-decoration: none;
+
+}
+.positionCube:hover, .positionCubeActive {
+	box-shadow: 0 0 0 2px black;
+	z-index: 10;
+}
+.aye {
+	background: $ayeColor;
+}
+.nay {
+	background: $nayColor;
+}
+.unknown {
+	background: $unknownColor;
+}
+.KMT {
+    background: #000095;
+}
+.DPP {
+    background: #009A00;
+}
+.PFP {
+    background: #FE6407;
+}
+.TSU {
+    background: #A25B09;
+}
+.NP, .NONE {
+    background: gray;
+}
+.NSU {
+    background: rgba(194,15,81,0.9);
+}
+/* hover 上的時候顯示的文字 */
+.activeBlock {
+	position: absolute;
+	top: -160px;
+	z-index: 10;
+}
+.activeBlockClose {
+	position: absolute;
+	top: -20px;
+	right: 5px;
+	cursor: pointer;
+}
+.activeCube, .activeCube:visited {
+	width: 100%;
+	background: white;
+	text-align: left;
+	padding: 10px;
+	font-size: 14px;
+	line-height: 1.4;
+
+	width: 340px;
+	border: 1px solid;
+
+	box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.12);
+
+	cursor: pointer;
+	display: block;
+	color: black;
+	text-decoration: none;
+
+}
+.activeContent {
+	height: 100px;
+	overflow: hidden;
+	margin: 5px 0;
+}
+.caucus {
+	background-image: url('./images/command-white.svg');
+	background-size: cover;
+}
+/*
+.caucus:after {
+	content: '令';
+	color: #FFFF1B;
+	border: 1px solid #FFFF1B;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: calc(100% - 2px);
+}*/

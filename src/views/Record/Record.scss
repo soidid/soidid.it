@@ -1,0 +1,188 @@
+@import '../../common.scss';
+$cubeSize: $defaultCubeSize;
+
+$border: 2px solid $trueBlack;
+.wrap {
+	max-width: 600px;
+	margin: 40px 0 0;
+	text-align: center;
+}
+.form {
+	border-top: $border;
+	border-bottom: $border;
+	background: $trueWhite;
+	text-align: left;
+	//box-shadow: 2px 2px 0 0 rgba(0,0,0,0.12);
+}
+@media all and (min-width: 600px){
+	.wrap {
+		margin: 40px auto 0;
+	}
+	.form {
+		border: $border;
+	}
+}
+.issueRow {
+	border-bottom: $border;
+	text-align: center;
+}
+.issueName {
+	background: $trueBlack;
+	color: $trueWhite;
+	padding: 10px 20px;
+}
+.issueQuestion {
+	padding: 10px 20px;
+}
+
+.content {
+	padding: 20px;
+}
+.peopleRow {
+	padding: 10px 20px;
+	min-height: 100px;
+}
+.judegementRow {
+	border-top: $border;
+	padding: 10px 20px;
+}
+.recordRow {
+	border-top: $border;
+}
+.clarifyRow {
+	position: relative;
+	border-top: $border;
+}
+.recordRow > .content > *:not(:first-child),
+.clarifyRow > .content > *:not(:first-child) {
+	margin-top: 20px;
+}
+
+.positionCube {
+	display: inline-block;
+	vertical-align: middle;
+	width: $cubeSize;
+	height: $cubeSize;
+  margin: 0 6px;
+}
+.avatar {
+	text-decoration: none;
+	width: 120px;
+	height: 120px;
+	margin: 0 auto;
+	border: 4px solid $lightGrey;
+	border-radius: 50%;
+	background: $trueWhite;
+}
+.profileBlock {
+	display: block;
+	text-align: center;
+	margin: 4px 0;
+}
+@media all and (min-width: 600px) {
+	.avatar, .avatar:visited, .profileBlock {
+		@include inline-middle;
+	}
+	.profileBlock {
+		max-width: calc(100% - 140px); // avatar width 120px + 20px margin
+		margin-left: 20px;
+		text-align: left;
+	}
+}
+.isCurrent, .isCandidate  {
+	font-size: $smallerFontSize;
+	line-height: 1.5;
+	color: $darkGrey;
+}
+.avatarName {
+  vertical-align: top;
+
+	> * {
+		@include inline-middle;
+	}
+	.name {
+		font-size: 40px;
+		font-weight: bold;
+	}
+	.party {
+		margin: 0 4px;
+		> * {
+			@include inline-middle;
+		}
+		.partyName {
+			margin-left: 4px;
+			font-size: 24px;
+		}
+	}
+}
+
+.judegementRow > * {
+	@include inline-middle;
+}
+
+.contentMeta {
+	line-height: $textLineHeight;
+}
+.contentMeta > * {
+	display: inline-block;
+	margin-right: $defaultFontSize;
+}
+.date {
+	font-weight: bold;
+}
+.contentMain {
+	margin-top: 20px;
+	line-height: $textLineHeight;
+	quotes: "\201C""\201D""\2018""\2019";
+}
+.contentMain:before, .contentMain:after {
+	display: inline-block;
+	color: $lightGrey;
+	font-size: $defaultFontSize*4;
+	vertical-align: top;
+  height: $defaultFontSize;
+  margin-top: $defaultFontSize*(-1.5);
+}
+.contentMain:before {
+	content: open-quote;
+	margin-right: 2px;
+}
+.contentMain:after {
+	content: close-quote;
+	margin-left: 2px;
+}
+.partyThen {
+	color: $grey;
+}
+.lyURL {
+	display: inline-block;
+	margin-right: 16px;
+}
+.clarifyRow > .content {
+	padding-top: $defaultFontSize + 10px*2;
+}
+.clarifyTitle {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: black;
+  color: white;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 0px;
+	font-size: $defaultFontSize;
+}
+.clarificationContent {
+	//padding: 20px;
+	line-height: $textLineHeight;
+}
+.clarifyPrompt {
+	display: inline-block;
+	line-height: $textLineHeight;
+}
+
+.seeOtherIssue {
+	padding: 10px;
+  margin-top: 40px;
+	font-size: 20px;
+}

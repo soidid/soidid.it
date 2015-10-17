@@ -3,7 +3,7 @@
 $cubeSize: $defaultCubeSize;
 
 .wrap {
-	display: inline-block;
+	margin-top: 150px;
 }
 .header {
 	display: block;
@@ -22,6 +22,17 @@ $cubeSize: $defaultCubeSize;
 	color: $darkGrey;
 	font-size: 14px;
 	line-height: 1.4;
+}
+.exploreButton, .exploreButton:visited {
+	display: block;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 6px 10px;
+    color: white;
+    margin-top: 20px;
+    border: none;
+    background: black;
+    box-shadow: 2px 2px 1px 0 rgba(0, 0, 0, 0.22);
 }
 .positionWrap {
 	position: relative;

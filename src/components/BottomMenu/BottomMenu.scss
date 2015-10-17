@@ -1,0 +1,33 @@
+@import '../../common.scss';
+$cubeSize: 50px;
+.wrap {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+    background: rgba(0,0,0,0.8);
+    padding: 10px;
+    height: 26 + $cubeSize;
+    overflow-x: scroll;
+}
+.positionCube, .positionCube:visited {
+	width: $cubeSize;
+	height: $cubeSize;
+	display: inline-block;;
+	cursor: pointer;
+	color: black;
+	text-decoration: none;
+	margin: 5px;
+}
+.aye {
+	background: $ayeColor;
+}
+.nay {
+	background: $nayColor;
+}
+.unknown {
+	background: $unknownColor;
+}
+.caucus {
+	background-image: url('./images/command.svg');
+	background-size: cover;
+}

@@ -80,6 +80,8 @@ export default class PartyPositionGroup extends Component {
         </div>
         <div style={layoutStyles.margin}>
           <div style={layoutStyles.baseCircle}>
+
+
             <div style={layoutStyles.colorCircleA} key={`A${layoutStyles.colorCircleA.border} ${layoutStyles.colorCircleA.borderColor}`}></div>
             <div style={layoutStyles.colorCircleB} key={`B${layoutStyles.colorCircleB.border} ${layoutStyles.colorCircleB.borderColor}`}></div>
             <div style={layoutStyles.colorCircleC} key={`C${layoutStyles.colorCircleC.border} ${layoutStyles.colorCircleC.borderColor}`}></div>
@@ -88,7 +90,10 @@ export default class PartyPositionGroup extends Component {
             <div style={layoutStyles.rect}>{records}</div>
             
           </div>
+          <Link to={`/explore`} 
+                  className={styles.exploreButton}>Explore</Link>
         </div>
+
       </div>
     );
   }
@@ -125,27 +130,8 @@ class Record extends Component {
     let isCaucus = (data.legislator.indexOf("黨團")!== -1);
     let caucusStyle = isCaucus ? styles.caucus : "";
 
-    /* active record */
-    let detailText;
-    if(active){
-
-          let preview = (data.content.length > 60) ? data.content.slice(0,60)+" ..." : data.content;
-          detailText =  (
-          <div className={styles.activeBlock}>
-              <div className={styles.activeCube}>
-                  <div className={styles.activeContent}>
-                    <div>{date.format('YYYY-MM-DD')} / {data.legislator} / {data.meetingCategory}</div>
-                    <div>{preview}</div>
-                  </div>
-              </div>
-          </div>);
-    }
-
-
     return (
       <div className={styles.postionWrap}>
-          {detailText}
-
           <div to={`/records/${data.id}`}
                 className={` ${styles.positionCube} ${cubeActiveStyle} ${styles[data.position]} ${caucusStyle }`}
                 >

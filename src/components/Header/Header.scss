@@ -1,6 +1,6 @@
 @import '../../common.scss';
 
-$logoHeight: 96px;
+$logoHeight: 40px;
 $logoMarginTop: 8px;
 $logoMarginLeft: 10px;
 $paddingHeight: ($appBarHeight - $symbolSize)/2; //11px; // (54 - 32 (symbol高))/2
@@ -11,7 +11,7 @@ $paddingHeight: ($appBarHeight - $symbolSize)/2; //11px; // (54 - 32 (symbol高)
 	left: 0;
 	background: $white;
 	padding: 0px;
-	height: $appBarHeightExtended;
+	height: 52px;
 	width: 100%;
   	box-shadow: 0 4px 4px 0px rgba($trueBlack, 0.25);
 	z-index: $zAppBar;
@@ -24,21 +24,11 @@ $paddingHeight: ($appBarHeight - $symbolSize)/2; //11px; // (54 - 32 (symbol高)
 	position: relative;
 	margin: 0 auto;
 }
-.siteName, .siteName:visited {
-	position: absolute;
-	display: inline-block;
-	margin: 0;
-	margin-top: $logoMarginTop;
-	margin-left: $logoMarginLeft;
-	text-decoration: none;
-	img {
-		@include prefix(filter, drop-shadow(0 0 20px rgba($trueWhite, 0.5)));
-	}
-}
 .siteLogo {
 	display: block;
 	height: $logoHeight;
 	padding: 0;
+	margin: 8px;
 }
 .lists {
 	display: block;
@@ -53,8 +43,6 @@ $paddingHeight: ($appBarHeight - $symbolSize)/2; //11px; // (54 - 32 (symbol高)
 .lists.showMenu {
 	width: 100%;
 	max-height: 1000px;
-	padding-top: $logoHeight + $logoMarginTop;
-  //transition: max-height .5s ease-in-out;
 }
 .lists li {
 	display: inline-block;
@@ -79,7 +67,7 @@ $paddingHeight: ($appBarHeight - $symbolSize)/2; //11px; // (54 - 32 (symbol高)
 }
 .rightToggle {
 	position: absolute;
-	top: 0;
+	top: -10px;
 	right: 0;
 	width: 54px;
 	height: 54px;

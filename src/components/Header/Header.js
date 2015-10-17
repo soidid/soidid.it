@@ -51,12 +51,12 @@ export default class Header extends Component {
       return (
         <li key={index}
             onClick={setIssue.bind(null,issueId)}>
-            <div className={`${styles.navItem} ${activeStyle}`}
-                  to={`/issues/${issueId}/`}
+            <Link className={`${styles.navItem} ${activeStyle}`}
+                  to={`/`}
                   onClick={this._onClickIssue.bind(this)}>
                     <img src={symbol} className={styles.symbol}/>
                     <span>{issues[issueId].title}</span>
-            </div>
+            </Link>
         </li>
       )
     })
@@ -69,11 +69,7 @@ export default class Header extends Component {
     return (
       <nav className={`${styles.appbar} ${showStyle}`}>
           <div className={styles.inner}>
-              <Link to="/" className={styles.siteName}
-                    onClick={this._hideMenu.bind(this)}>
-                <img src={siteLogo} className={styles.siteLogo}/>
-              </Link>
-
+              
               <ul className={`${styles.lists} ${showStyle}`}>
                 {issueItems}
               </ul>

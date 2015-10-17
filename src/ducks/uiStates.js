@@ -1,11 +1,13 @@
 const SET_ISSUE = 'SET_ISSUE';
 const SET_VIEW = 'SET_VIEW';
 const SET_ACTIVE_RECORD = 'SET_ACTIVE_RECORD';
+const SET_ACTIVE_PARTY = 'SET_ACTIVE_PARTY';
 
 const initialState = {
   currentIssueUrl: "marriage-equality",
   currentView: "parties",
-  activeRecord: "1"
+  activeRecordId: "1",
+  currentPartyId: "KMT"
 };
 
 export default function reducer(state = initialState, action = {}) {
@@ -14,21 +16,33 @@ export default function reducer(state = initialState, action = {}) {
       return {
         currentIssueUrl: action.value,
         currentView: state.currentView,
-        activeRecord: state.activeRecord
+        activeRecordId: state.activeRecord,
+        currentPartyId: state.currentPartyId
       };
-      
+
     case SET_VIEW:
       return {
         currentIssueUrl: state.currentIssueUrl,
         currentView: action.value,
-        activeRecord: state.activeRecord
+        activeRecordId: state.activeRecord,
+        currentPartyId: state.currentPartyId
       };
 
     case SET_ACTIVE_RECORD:
       return {
         currentIssueUrl: state.currentIssueUrl,
         currentView: state.currentView,
-        activeRecord: action.value
+        activeRecordId: action.value,
+        currentPartyId: state.currentPartyId
+      };
+
+    case SET_ACTIVE_PARTY:
+    console.log(action)
+      return {
+        currentIssueUrl: state.currentIssueUrl,
+        currentView: state.currentView,
+        activeRecordId: state.activeRecord,
+        currentPartyId: action.value
       };
 
     default:
@@ -50,6 +64,12 @@ export function setView(value) {
 export function setActiveRecord(value) {
   return {
     type: SET_ACTIVE_RECORD,
+    value: value
+  };
+}
+export function setActiveParty(value) {
+  return {
+    type: SET_ACTIVE_PARTY,
     value: value
   };
 }

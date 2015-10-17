@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
-import { Link } from "react-router";
-import DocumentMeta from 'react-document-meta';
 import { connect } from 'react-redux';
+import { Link } from "react-router";
+
 import moment from 'moment';
 
 import cht2url from '../../utils/cht2url';
@@ -12,12 +12,12 @@ import parseToLegislatorPosition from '../../utils/parseToLegislatorPosition';
 import peopleInfo from '../../utils/peopleInfo';
 
 import PeoplePhoto from '../../components/PeoplePhoto/PeoplePhoto.js';
-import IssueGroup from '../../components/IssueGroup/IssueGroup.js';
 
 @connect(
     state => ({legislators: state.legislators,
                issues: state.issues,
-               records: state.records
+               records: state.records,
+               uiStates: state.uiStates 
                }),
     dispatch => bindActionCreators({}, dispatch))
 
@@ -35,11 +35,14 @@ export default class Record extends Component {
 
   render() {
     const styles = require('./Record.scss');
-    const {records, issues, legislators} = this.props;
-    const recordId = this.props.params.recordId;
+    const {records, issues, legislators, uiStates} = this.props;
+    
+    const data = records[uiStates.activeRecordId];
+    console.log(data)
 
-    const data = records[recordId];
-
+    if(!data){
+      return <div className={styles.exploreBelow}>點選下方列表探索表態。</div>
+    }
     const legislatorId = people_name2id(data.legislator);
     const legislator = legislators[legislatorId];
 
@@ -90,24 +93,11 @@ export default class Record extends Component {
 
     const title = `${name}${data.positionJudgement}-沃草2016立委出任務`;
     const description = `${name}${data.positionJudgement}，${name}為${eng2cht(data.party)}立委，為什麼對於${data.issue}採用此戰鬥策略？`;
-    const metaData = {
-      title: title,
-      description: description,
-      meta: {
-          charSet: 'utf-8',
-          property: {
-            'og:title': title,
-            'og:description': description,
-            'og:type' : 'website'
-          }
-      }
-     
-    };
+   
 
     return (
 
     <div className={styles.wrap}>
-      <DocumentMeta {...metaData}/>
       <div className={styles.form}>
         <div className={styles.issueRow}>
           <div className={styles.issueName}>{data.issue}</div>
@@ -154,8 +144,7 @@ export default class Record extends Component {
           </div>
         </div>
       </div>
-      <div className={styles.seeOtherIssue}>看看{data.legislator}<br/>在各個議題的表態紀錄⋯</div>
-      <IssueGroup id={legislatorId} currentLegislatorPosition={currentLegislatorPosition}/>
+      
     </div>
 
     ); // end of return

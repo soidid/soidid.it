@@ -1,11 +1,18 @@
 import React, {Component, PropTypes} from 'react';
 import {Link} from 'react-router';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 import moment from 'moment';
 
 import eng2cht from '../../utils/eng2cht';
 import position2color from '../../utils/position2color';
 import rectInCircleLayout from '../../utils/rectInCircleLayout';
 
+import {setActiveParty} from '../../ducks/uiStates';
+
+@connect(
+    state => ({}),
+    dispatch => bindActionCreators({setActiveParty}, dispatch))
 export default class PartyPositionGroup extends Component {
   static propTypes = {
   }
@@ -32,7 +39,7 @@ export default class PartyPositionGroup extends Component {
   render() {
     const styles = require('./PartyPositionGroup.scss');
     const {data, issueURL, userPosition, issueStatement} = this.props;
-    const {parties} = this.props;
+    const {parties, setActiveParty} = this.props;
 
     let partyTitle = eng2cht(data.party);//KMT->中國國民黨
 
@@ -91,7 +98,8 @@ export default class PartyPositionGroup extends Component {
             
           </div>
           <Link to={`/explore`} 
-                  className={styles.exploreButton}>Explore</Link>
+                className={styles.exploreButton}
+                onClick={setActiveParty.bind(null,data.party)}>Explore</Link>
         </div>
 
       </div>
@@ -106,26 +114,11 @@ class Record extends Component {
   static propTypes = {
     data : PropTypes.object.isRequired
   }
-  constructor(props){super(props)
-    this.state = {
-      active: false
-    }
-  }
-  _toggleActive(value, event){
-    this.setState({
-      active: value
-    })
-  }
-
   render() {
     const styles = require('./PartyPositionGroup.scss');
     const {data} = this.props;
-    const {active} = this.state;
-
+    
     let date = moment.unix(data.date);
-
-    let cubeActiveStyle = (active) ? styles.positionCubeActive : "";
-
     //是否為黨團
     let isCaucus = (data.legislator.indexOf("黨團")!== -1);
     let caucusStyle = isCaucus ? styles.caucus : "";
@@ -133,10 +126,8 @@ class Record extends Component {
     return (
       <div className={styles.postionWrap}>
           <div to={`/records/${data.id}`}
-                className={` ${styles.positionCube} ${cubeActiveStyle} ${styles[data.position]} ${caucusStyle }`}
-                >
+               className={` ${styles.positionCube} ${styles[data.position]} ${caucusStyle }`}>
           </div>
-
       </div>
     )
   }

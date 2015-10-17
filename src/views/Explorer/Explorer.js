@@ -4,6 +4,7 @@ import {Link} from 'react-router';
 import DocumentMeta from 'react-document-meta';
 import {connect} from 'react-redux';
 
+import Record from '../../components/Record/Record.js';
 import BottomMenu from '../../components/BottomMenu/BottomMenu.js';
 
 @connect(
@@ -18,11 +19,11 @@ export default class Explorer extends Component {
   render() {
     const styles = require('./Explorer.scss');
     const {issues, records, uiStates} = this.props;
-   // console.log(records)
+    // console.log(records)
     console.log(uiStates)
     return (
       <div className={styles.wrap}>
-          {records[uiStates.activeRecord]}
+          <Record />
           <BottomMenu/>
       </div>
     );

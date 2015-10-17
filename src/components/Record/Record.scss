@@ -4,8 +4,12 @@ $cubeSize: $defaultCubeSize;
 $border: 2px solid $trueBlack;
 .wrap {
 	max-width: 600px;
-	margin: 40px 0 0;
+	margin: 0px 0 100px 0;
 	text-align: center;
+}
+.exploreBelow {
+	padding: 20px;
+	
 }
 .form {
 	border-top: $border;

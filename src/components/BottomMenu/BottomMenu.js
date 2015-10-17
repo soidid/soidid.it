@@ -11,6 +11,7 @@ import rectInCircleLayout from '../../utils/rectInCircleLayout';
 import parseToPartyView from '../../utils/parseToPartyView';
 import parseToLegislatorView from '../../utils/parseToLegislatorView';
 import parseToPositionView from '../../utils/parseToPositionView';
+import parseToPartyPosition from '../../utils/parseToPartyPosition';
 
 import {setActiveRecord} from '../../ducks/uiStates';
 
@@ -29,6 +30,7 @@ export default class BottomMenu extends Component {
     this.state = {
         viewWidth: "",
         partyView: parseToPartyView(props.records, props.issues),
+        partyPosition: parseToPartyPosition(props.records, props.issues),
         legislatorView: parseToLegislatorView(props.records, props.issues),
         positionView: parseToPositionView(props.records, props.issues)
     }
@@ -49,23 +51,25 @@ export default class BottomMenu extends Component {
   }
   render() {
     const styles = require('./BottomMenu.scss');
-    const {issues, uiStates, setActiveRecord} = this.props;
-    const {partyView, legislatorView, positionView} = this.state;
+    const {issues, parties, uiStates, setActiveRecord} = this.props;
+    const {partyView, legislatorView, positionView, partyPosition} = this.state;
     
-    console.log(partyView) 
-
     let currentViewEng = issues[uiStates.currentIssueUrl].titleEng;
-    let data = partyView[currentViewEng].partyPositions[0];
-    let records = data.records.map((data,index)=>{
+    console.log(uiStates.currentPartyId)
+    let positionRecords = partyPosition[uiStates.currentPartyId].positions[currentViewEng];
+    if(!positionRecords) return <div></div>
+
+    let records = positionRecords.records.map((data,index)=>{
       
         let date = moment.unix(data.date);
         
         //是否為黨團
         let isCaucus = (data.legislator.indexOf("黨團")!== -1);
         let caucusStyle = isCaucus ? styles.caucus : "";
+        let activeStyle = (uiStates.activeRecordId === data.id) ? styles.active : "";
 
         return (
-          <div className={` ${styles.positionCube} ${styles[data.position]} ${caucusStyle }`}
+          <div className={` ${styles.positionCube} ${styles[data.position]} ${caucusStyle} ${activeStyle}`}
                key={index}
                onClick={setActiveRecord.bind(null, data.id)}>
           </div>
@@ -73,16 +77,17 @@ export default class BottomMenu extends Component {
         )
     
     });
-
     let containerStyle = {
-      width: `${data.records.length * 40}px`
+      width: `${positionRecords.records.length * 60}px`
     }
-    
-
+   
     return (
-      <div className={styles.wrap}>
-        <div style={containerStyle}>
-          {records}
+      <div>
+        <div className={styles.title}>{parties[uiStates.currentPartyId].name} 的表態</div>
+        <div className={styles.wrap}>
+          <div style={containerStyle}>
+            {records}
+          </div>
         </div>
       </div>
     )
